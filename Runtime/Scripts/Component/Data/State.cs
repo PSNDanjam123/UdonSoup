@@ -14,6 +14,10 @@ namespace UdonSoup.Component.Data
 
         public override void OnPlayerJoined(VRCPlayerApi player)
         {
+            if (LocalPlayer != player)
+            {
+                return; // only init for local player
+            }
             Publish();
         }
 
