@@ -1,12 +1,9 @@
 ﻿
-using UdonSharp;
 using UnityEngine;
-using VRC.SDKBase;
-using VRC.Udon;
 
 namespace UdonSoup.Component.Data
 {
-    public class DatabaseElement : UdonSoup.Core.Network
+    public abstract class DatabaseElement : UdonSoup.Core.Network
     {
         [SerializeField, HideInInspector]
         int databaseIndex; public int DatabaseIndex => databaseIndex;

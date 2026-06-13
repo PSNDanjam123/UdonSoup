@@ -1,9 +1,6 @@
 ﻿
-using UdonSharp;
-using UnityEngine;
-using VRC.SDKBase;
-using VRC.Udon;
 using UdonSoup.Attribute;
+using UnityEngine;
 
 namespace UdonSoup.Component.Data
 {
@@ -20,24 +17,13 @@ namespace UdonSoup.Component.Data
         {
             for (var i = 0; i < routeKeys.Length; i++)
             {
-                if (routeKeys[i] == key)
-                {
-                    return routeObjects[i].GetComponent<DatabaseElement>();
-                }
+                if (routeKeys[i] != key) continue;
+                return routeObjects[i].GetComponent<DatabaseElement>();
             }
             return null;
         }
-
-        public DatabaseElement FindByIndex(int index)
-        {
-            return routeObjects[index].GetComponent<DatabaseElement>();
-        }
-
-        public DatabaseElement FindChild(DatabaseElement parent, string key)
-        {
-            return Find(parent.DatabaseKey + "." + key);
-        }
-
+        public DatabaseElement FindByIndex(int index) => routeObjects[index].GetComponent<DatabaseElement>();
+        public DatabaseElement FindChild(DatabaseElement parent, string key) => Find(parent.DatabaseKey + "." + key);
         public DatabaseElement FindParent(DatabaseElement child, int level = 1)
         {
             string key = "";

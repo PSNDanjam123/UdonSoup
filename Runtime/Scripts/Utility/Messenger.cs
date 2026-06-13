@@ -1,11 +1,10 @@
 ﻿
 using UdonSharp;
-using UnityEngine;
-using VRC.SDKBase;
-using VRC.Udon;
 using UdonSoup.Attribute;
 using UdonSoup.Component.Data;
+using UnityEngine;
 using VRC.SDK3.Data;
+using VRC.SDKBase;
 
 namespace UdonSoup.Utility
 {

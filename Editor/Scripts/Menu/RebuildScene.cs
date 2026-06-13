@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Linq;
+using UdonSharpEditor;
+using UdonSoup.Editor.Utility;
+using UnityEditor;
 using UnityEngine;
 using UEditor = UnityEditor.Editor;
-using UdonSoup.Editor.Utility;
-using UdonSharpEditor;
 
 namespace UdonSoup.Editor.Menu
 {
@@ -19,56 +19,33 @@ namespace UdonSoup.Editor.Menu
 
         private static void addUdonSoup()
         {
-            if (sceneHas("UdonSoup"))
-            {
-                return;
-            }
-            var obj = (GameObject)Resources.Load("UdonSoup");
-            var go = Instantiate(obj, new Vector3(0, 0, 0), Quaternion.identity);
-            go.name = "UdonSoup";
-            go.transform.SetAsFirstSibling();
+            if (sceneHas("UdonSoup")) return;
+            var prefab = Resources.Load("UdonSoup");
+            var instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+            instance.transform.SetAsFirstSibling();
+            instance.name = "UdonSoup";
         }
 
         private static void addDatabase()
         {
-            if (sceneHas("Database"))
-            {
-                return;
-            }
+            if (sceneHas("Database")) return;
             var go = new GameObject("Database");
             go.AddUdonSharpComponent<UdonSoup.Component.Data.Database>();
         }
 
         private static void addRouter()
         {
-            if (sceneHas("Router"))
-            {
-                return;
-            }
+            if (sceneHas("Router")) return;
             new GameObject("Router");
         }
 
         private static void addController()
         {
-            if (sceneHas("Controllers"))
-            {
-                return;
-            }
+            if (sceneHas("Controllers")) return;
             new GameObject("Controllers");
         }
 
-        private static bool sceneHas(string name)
-        {
-            var rootGos = SceneFinder.GetRootGameObjects();
-            foreach (var rootGo in rootGos)
-            {
-                if (rootGo.name == name)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        private static bool sceneHas(string name) => SceneFinder.GetRootGameObjects().Any(x => x.name == name);
 
     }
 }

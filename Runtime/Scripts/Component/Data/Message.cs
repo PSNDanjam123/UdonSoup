@@ -1,9 +1,7 @@
 ﻿
 using UdonSharp;
-using UnityEngine;
-using VRC.SDKBase;
-using VRC.Udon;
 using VRC.SDK3.Data;
+using VRC.SDKBase;
 using VRC.Udon.Common;
 
 namespace UdonSoup.Component.Data
@@ -27,10 +25,7 @@ namespace UdonSoup.Component.Data
         public override void OnPreSerialization()
         {
             base.OnPreSerialization();
-            if (!VRCJson.TrySerializeToJson(requestPool, JsonExportType.Minify, out DataToken res))
-            {
-                return;
-            }
+            if (!VRCJson.TrySerializeToJson(requestPool, JsonExportType.Minify, out DataToken res)) return;
             networkData = res.String;
         }
 
@@ -42,10 +37,7 @@ namespace UdonSoup.Component.Data
 
         public override void OnDeserialization()
         {
-            if (!VRCJson.TryDeserializeFromJson(networkData, out DataToken res))
-            {
-                return;
-            }
+            if (!VRCJson.TryDeserializeFromJson(networkData, out DataToken res)) return;
             responsePool = res.DataList;
             base.OnDeserialization();
         }
@@ -81,10 +73,7 @@ namespace UdonSoup.Component.Data
             responsePool = requestPool.DeepClone();
 
             // If no other players clear the request pool
-            if (VRCPlayerApi.GetPlayerCount() == 1)
-            {
-                requestPool.Clear();
-            }
+            if (VRCPlayerApi.GetPlayerCount() == 1) requestPool.Clear();
             Sync();
         }
 
@@ -96,15 +85,9 @@ namespace UdonSoup.Component.Data
             {
                 var data = response.DataDictionary;
                 var requestId = (int)data["i"].Double;
-                if (requestId <= lastHandledRequestId)
-                {
-                    continue;   // already handled, skip
-                }
+                if (requestId <= lastHandledRequestId) continue;   // already handled, skip
                 lastHandledRequestId = requestId;
-                if (data["m"].Boolean && !LocalPlayer.isMaster)
-                {
-                    continue; // this message is for master only
-                }
+                if (data["m"].Boolean && !LocalPlayer.isMaster) continue; // this message is for master only
                 for (var i = 0; i < Subscribers.Length; i++)
                 {
                     Subscribers[i].OnMessage(this, response.DataDictionary);

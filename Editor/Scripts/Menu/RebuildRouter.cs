@@ -1,12 +1,8 @@
 ﻿
-using UdonSharp;
-using UnityEngine;
-using VRC.SDKBase;
-using VRC.Udon;
-using UEditor = UnityEditor.Editor;
-using UdonSoup.Editor.Utility;
-using UdonSoup.Component;
 using System.Linq;
+using UdonSoup.Component;
+using UdonSoup.Editor.Utility;
+using UEditor = UnityEditor.Editor;
 
 namespace UdonSoup.Editor.Menu
 {

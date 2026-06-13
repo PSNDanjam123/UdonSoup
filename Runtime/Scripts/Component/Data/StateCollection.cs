@@ -1,9 +1,5 @@
 ﻿
-using UdonSharp;
 using UnityEngine;
-using VRC.SDKBase;
-using VRC.Udon;
-using UdonSoup.Component.Data;
 
 namespace UdonSoup.Component.Data
 {

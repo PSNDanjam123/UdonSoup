@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEditor;
 using UEditor = UnityEditor.Editor;
-using UnityEditor;
 
 namespace UdonSoup.Editor.Menu
 {

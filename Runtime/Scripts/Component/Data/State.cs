@@ -1,8 +1,6 @@
 ﻿
-using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using VRC.Udon;
 
 namespace UdonSoup.Component.Data
 {
@@ -14,18 +12,11 @@ namespace UdonSoup.Component.Data
 
         public override void OnPlayerJoined(VRCPlayerApi player)
         {
-            if (LocalPlayer != player)
-            {
-                return; // only init for local player
-            }
+            if (LocalPlayer != player) return; // only init for local player
             Publish();
         }
 
-        public void ClearSubscriptions()
-        {
-            subscribers = new UdonSoup.Component.View[0];
-        }
-
+        public void ClearSubscriptions() => subscribers = new UdonSoup.Component.View[0];
         public void Subscribe(UdonSoup.Core.Base reciever)
         {
             var newSubs = new UdonSoup.Core.Base[subscribers.Length + 1];

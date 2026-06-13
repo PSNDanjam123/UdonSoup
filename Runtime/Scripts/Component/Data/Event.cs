@@ -1,15 +1,10 @@
 ﻿
-using UdonSharp;
 using UnityEngine;
-using VRC.SDKBase;
-using VRC.Udon;
-using VRC.SDK3.Data;
-using VRC.Udon.Common;
 using VRC.Udon.Common.Interfaces;
 
 namespace UdonSoup.Component.Data
 {
-    public class Event : DatabaseElement
+    public abstract class Event : DatabaseElement
     {
         [SerializeField]
         bool sendLocalOnly = false;

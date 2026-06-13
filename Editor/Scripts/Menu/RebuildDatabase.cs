@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UEditor = UnityEditor.Editor;
-using UnityEngine;
-using UdonSoup.Editor.Utility;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UdonSoup.Component.Data;
+using UdonSoup.Editor.Utility;
+using UnityEngine;
+using UEditor = UnityEditor.Editor;
 
 namespace UdonSoup.Editor.Menu
 {

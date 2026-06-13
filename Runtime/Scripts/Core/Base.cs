@@ -8,12 +8,6 @@ namespace UdonSoup.Core
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public abstract class Base : UdonSharpBehaviour
     {
-        [SerializeField]
-        bool debug = false;
-
-        [SerializeField, HideInInspector]
-        UdonSoup.Utility.Debug Debug;
-
         [SerializeField, HideInInspector]
         protected UdonSoup.Component.Data.Database Database;
 
@@ -42,15 +36,6 @@ namespace UdonSoup.Core
                 }
                 return localPlayerId;
             }
-        }
-
-        protected void Log(object message)
-        {
-            if (!debug)
-            {
-                return;
-            }
-            Debug.Log(message);
         }
 
         public virtual void SoupSetupSubscriptions()

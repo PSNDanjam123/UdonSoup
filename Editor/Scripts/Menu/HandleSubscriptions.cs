@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UEditor = UnityEditor.Editor;
-using UnityEngine;
-using System.Linq;
-using UdonSoup.Editor.Utility;
-using UdonSoup.Core;
+﻿using System.Linq;
 using UdonSoup.Component.Data;
+using UdonSoup.Core;
+using UdonSoup.Editor.Utility;
+using UnityEngine;
+using UEditor = UnityEditor.Editor;
 
 public class HandleSubscriptions : UEditor
 {
